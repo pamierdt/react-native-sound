@@ -96,7 +96,9 @@ function Sound(filename, basePath, onError, options) {
       this._loaded = true;
       this.registerOnPlay();
     }
-    onError && onError(error, props);
+    if (typeof onError === 'function') {
+      onError(error, props);
+    }
   });
 }
 
